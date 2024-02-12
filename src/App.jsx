@@ -11,9 +11,9 @@ function App() {
   const [principle,setPrinciple] = useState(0)
   const [rate,setRate] = useState(0)
   const [year,setYear] = useState(0)
-  const [principleAmountValid,setPrincipleAmountValid] = useState(0)
-  const [rateAmountValid,setRateAmountValid] = useState(0)
-  const [yearValid,setYearValid] = useState(0)
+  const [principleAmountValid,setPrincipleAmountValid] = useState(true)
+  const [rateAmountValid,setRateAmountValid] = useState(true)
+  const [yearValid,setYearValid] = useState(true)
 
   const handleCalculate = ()=>{
     if(principle && rate && year){
@@ -81,7 +81,7 @@ function App() {
           <div className='mb-3'>
             <TextField className='w-100' id="outlined-basic-principle" label="Principle Amount" variant="filled" value={principle || ""}  name='principle' onChange={e=>handleValidation(e.target)} />
             </div>
-            { !principleAmountValid && <div className="text-danger m-3">invalid principle Amount</div> }
+            { !principleAmountValid&& <div className="text-danger m-3">invalid principle Amount</div> }
             {}
             <div className='mb-3'>
             <TextField className='w-100' id="outlined-basic-rate" label="Interest Rate" variant="filled" value={rate || ""} name='rate' onChange={e=>handleValidation(e.target)} />
@@ -94,7 +94,7 @@ function App() {
             { !yearValid && <div className="text-danger m-3">invalid Time Period</div>}
             {}
             <Stack direction="row" spacing={2}>
-              <button onClick={handleCalculate} disabled={!principleAmountValid || !rateAmountValid || !yearValid} style={{width:'50%',height:'70px'}}className='bg-dark' variant="contained">Calculate</button>
+              <button onClick={handleCalculate} disabled = { !principleAmountValid || !rateAmountValid || !yearValid} style={{width:'50%',height:'70px'}}className='bg-dark' variant="contained">Calculate</button>
               <button onClick={handleReset} style={{width:'50%',height:'70px'}} variant="outlined">RESET</button>
             </Stack>
         </form>
